@@ -13,28 +13,27 @@ beforeAll((done) => {
     })
     .end((err, res) => {
       token = res.body.token        
-      console.log(res.error)
+      console.log(res.body)
       done()
     })
 })
 
 describe('GET /jokes', () => {
 
-  it('should respond with 200', () => {
+  xit('should respond with 200', () => {
     return request(server)
       .get('/api/jokes')
       .set({authorization: `${token}`})
       .then(res => {
-        console.log(res.error)
         expect(res.status).toBe(200)
       })
   })
 
-  it('should respond with 401 unauthorized', () => {
+  it('should respond with 400 no token provided', () => {
     return request(server)
       .get('/api/jokes')
       .then(res => {
-        expect(res.status).toBe(401)
+        expect(res.status).toBe(400)
       })
   })
 })

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "test": "jest --verbose"
+    "test": "cross-env DB_ENV=testing jest --verbose"
   },
   "repository": {
     "type": "git",
